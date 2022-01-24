@@ -1,27 +1,36 @@
 # AutorWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.4.
+Esse projeto fo gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 13.1.4.
 
-## Development server
+O projeto 'Cadastro de Autor' é composto por duas partes:
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+- A interface (AutorWeb) construída em [Angular (V13.1.0)](https://angular.io/cli)
+	- Repositório: https://github.com/willfragoso/autor-web.git
 
-## Code scaffolding
+- O serviço (backend) construído em [Spring Boot (2.6.3)](https://spring.io/projects/spring-boot)
+	- Repositório: https://github.com/willfragoso/autor-api.git
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Configuração Inicial - Frontend
 
-## Build
+Para rodar o front é necessário seguir os seguintes passos:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+1) clonar o repositório "autor-web.git"
+2) Executar a instalação das dependências (usando o NPM do Node.js)
 
-## Running unit tests
+```shell
+git clone https://github.com/willfragoso/autor-api.git
+cd autor-api/
+npm install
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Subindo o projeto
 
-## Running end-to-end tests
+É possível subir o projeto executando o seguinte comando:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+```shell
+ng serve
+```
 
-## Further help
+O mesmo está configurado para subir na porta padrão (4200)
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+- Link para acesso à interface: http://localhost:4200/

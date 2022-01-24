@@ -81,4 +81,16 @@ export class AutorService extends AppService {
 		);
 	}
 
+	deleteAutor(id: number | undefined) {
+		return this.httpClient.delete<any>(
+			this.baseApi + this.resource + '/' + id,
+			{
+				headers: this.getHeaders()
+			}
+		).pipe(
+			map(this.extractData),
+			catchError(this.handleError)
+		);
+	}
+
 }

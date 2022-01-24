@@ -5,6 +5,8 @@ import {AutorDTO} from '../../_model/autor-d-t-o';
 import {AutorFiltroDTO} from '../../_model/autor-filtro-d-t-o';
 import {AutorService} from '../../_service/api/autor.service';
 
+declare var window: any;
+
 @Component({
 	selector: 'app-autor-listar',
 	templateUrl: './autor-listar.component.html',
@@ -16,12 +18,19 @@ export class AutorListarComponent implements OnInit {
 
 	arrayAutorDTO: AutorDTO[] = [];
 
+	autorDTO: AutorDTO = new AutorDTO();
+
+	modalConfirmarExclusao: any;
+
 	constructor(private router: Router,
 				private autorService: AutorService,
 				private notifierService: NotifierService) {
 	}
 
 	ngOnInit() {
+		this.modalConfirmarExclusao = new window.bootstrap.Modal(
+			document.getElementById('modalConfirmarExclusao')
+		);
 		this.pesquisar();
 	}
 
@@ -54,20 +63,24 @@ export class AutorListarComponent implements OnInit {
 		this.router.navigate(['autor/alterar/' + autorDTO.id]);
 	}
 
-	excluir(autorDTO: AutorDTO) {
-		// this.autorService.getPesquisarAutor(this.autorFiltroDTO).subscribe(
-		// 	{
-		// 		next: data => {
-		// 			this.arrayAutorDTO = data['content'];
-		// 			if (this.arrayAutorDTO.length === 0) {
-		// 				this.notifierService.notify('warning', 'Nenhum registro foi encontrado.');
-		// 			}
-		// 		},
-		// 		error: errorMessage => {
-		// 			this.notifierService.notify('error', errorMessage);
-		// 		}
-		// 	}
-		// );
+	abrirModalConfirmacaoExclusao(autorDTO: AutorDTO) {
+		this.autorDTO = autorDTO;
+		this.modalConfirmarExclusao.show();
+	}
+
+	excluir() {
+		this.autorService.deleteAutor(this.autorDTO.id).subscribe(
+			{
+				next: () => {
+					this.modalConfirmarExclusao.hide();
+					this.notifierService.notify('success', 'O registro foi excluído com sucesso.');
+					this.pesquisar();
+				},
+				error: errorMessage => {
+					this.notifierService.notify('error', errorMessage);
+				}
+			}
+		);
 	}
 
 }

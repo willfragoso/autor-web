@@ -24,6 +24,8 @@ export class AutorIncluirComponent implements OnInit {
 
 	modalCadastrarLivro: any;
 
+	modalConfirmarExclusao: any;
+
 	constructor(private router: Router,
 				private autorService: AutorService,
 				private notifierService: NotifierService) {
@@ -33,11 +35,15 @@ export class AutorIncluirComponent implements OnInit {
 		this.modalCadastrarLivro = new window.bootstrap.Modal(
 			document.getElementById('modalCadastrarLivro')
 		);
+		this.modalConfirmarExclusao = new window.bootstrap.Modal(
+			document.getElementById('modalConfirmarExclusao')
+		);
 	}
 
 	abrirModalIncluirLivro() {
 		this.isAlteracao = false;
 		this.index = -1;
+		this.livroDTO = new LivroDTO();
 		this.modalCadastrarLivro.show();
 	}
 
@@ -58,8 +64,14 @@ export class AutorIncluirComponent implements OnInit {
 		this.modalCadastrarLivro.hide();
 	}
 
-	excluirLivro(index: number) {
-		this.autorDTO.livros.splice(index, 1);
+	confirmarExclusaoLivro(index: number) {
+		this.index = index;
+		this.modalConfirmarExclusao.show();
+	}
+
+	excluirLivro() {
+		this.autorDTO.livros.splice(this.index, 1);
+		this.modalConfirmarExclusao.hide();
 	}
 
 	salvarAutor() {
