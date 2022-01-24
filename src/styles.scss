@@ -1,5 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
+@import 'node_modules/angular-notifier/styles.scss';
+
 html, body {
 	height: 100%;
 }
@@ -7,4 +9,33 @@ html, body {
 body {
 	margin: 0;
 	font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.app-cover-spin {
+	position: fixed;
+	width: 100%;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0.6);
+	z-index: 9999999;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.app-table thead tr th {
+	font-weight: normal !important;
+}
+
+.app-table {
+	margin-bottom: 0;
+}
+
+.app-table-empty {
+	border-left: 1px solid #dee2e6;
+	border-right: 1px solid #dee2e6;
+	border-bottom: 1px solid #dee2e6;
+	background-color: #dee2e6;
 }

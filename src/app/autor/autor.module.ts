@@ -1,7 +1,6 @@
+import {CommonModule} from '@angular/common';
 import {NgModule} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
+import {FormsModule} from '@angular/forms';
 import {AutorAlterarComponent} from './alterar/autor-alterar.component';
 import {AutorRoutingModule} from './autor-routing.module';
 import {AutorIncluirComponent} from './incluir/autor-incluir.component';
@@ -15,10 +14,8 @@ import {AutorListarComponent} from './listar/autor-listar.component';
 	],
 	imports: [
 		AutorRoutingModule,
-
-		MatButtonModule,
-		MatIconModule,
-		MatToolbarModule
+		FormsModule,
+		CommonModule
 	],
 	providers: [],
 	bootstrap: []

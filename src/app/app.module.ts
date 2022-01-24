@@ -1,9 +1,9 @@
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgModule} from '@angular/core';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatToolbarModule} from '@angular/material/toolbar';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {NotifierModule} from 'angular-notifier';
+import {LoadingInterceptor} from './_interceptor/loading.interceptor';
 
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
@@ -16,12 +16,12 @@ import {AppComponent} from './app.component';
 		AppRoutingModule,
 		BrowserModule,
 		BrowserAnimationsModule,
-
-		MatButtonModule,
-		MatIconModule,
-		MatToolbarModule
+		HttpClientModule,
+		NotifierModule
 	],
-	providers: [],
+	providers: [
+		{provide: HTTP_INTERCEPTORS, useClass: LoadingInterceptor, multi: true}
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {

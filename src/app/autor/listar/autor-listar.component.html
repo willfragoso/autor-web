@@ -1,3 +1,91 @@
-<mat-toolbar color="primary">
-	<span>Pesquisar Autores</span>
-</mat-toolbar>
+<div class="container pt-4 pb-2">
+	<h5>Listar Autores</h5>
+	<hr/>
+	<div class="row">
+		<div class="col-1">
+			<label class="form-label"
+				   for="txtFiltroAutorId">
+				ID
+			</label>
+			<input [(ngModel)]="autorFiltroDTO.id"
+				   class="form-control"
+				   id="txtFiltroAutorId"
+				   type="text">
+		</div>
+		<div class="col-4">
+			<label class="form-label"
+				   for="txtFiltroAutorNome">
+				Nome
+			</label>
+			<input [(ngModel)]="autorFiltroDTO.nome"
+				   class="form-control"
+				   id="txtFiltroAutorNome"
+				   type="text">
+		</div>
+		<div class="col-3">
+			<label class="form-label"
+				   for="txtFiltroAutorPaisOrigem">
+				País de Origem
+			</label>
+			<input [(ngModel)]="autorFiltroDTO.paisOrigem"
+				   class="form-control"
+				   id="txtFiltroAutorPaisOrigem"
+				   type="text">
+		</div>
+		<div class="col-2">
+			<label class="form-label"
+				   for="txtFiltroAutorDataNascimento">
+				Data de Nascimento
+			</label>
+			<input [(ngModel)]="autorFiltroDTO.dataNascimento"
+				   class="form-control"
+				   id="txtFiltroAutorDataNascimento"
+				   type="date">
+		</div>
+		<div class="col-1 d-flex">
+			<button (click)="pesquisar()"
+					class="btn btn-dark align-self-end"
+					type="button">
+				Pesquisar
+			</button>
+		</div>
+		<div class="col-1 d-flex">
+			<button (click)="limpar()"
+					class="btn btn-outline-dark align-self-end"
+					type="button">
+				Limpar
+			</button>
+		</div>
+	</div>
+	<hr class="mt-4"/>
+</div>
+
+<div class="container pb-4">
+	<div class="bg-dark text-white p-2">
+		Autores
+	</div>
+	<table class="table table-bordered table-hover app-table">
+		<thead>
+		<tr>
+			<th>#</th>
+			<th>Nome</th>
+			<th>País de Origem</th>
+			<th>Data de Nascimento</th>
+		</tr>
+		</thead>
+		<tbody>
+		<tr *ngFor="let autorDTO of arrayAutorDTO">
+			<td>{{autorDTO.id}}</td>
+			<td>{{autorDTO.nome}}</td>
+			<td>{{autorDTO.paisOrigem}}</td>
+			<td>{{autorDTO.dataNascimento | date:'dd/MM/yyyy'}}</td>
+		</tr>
+		</tbody>
+	</table>
+	<div *ngIf="arrayAutorDTO.length === 0"
+		 class="p-3 text-center app-table-empty">
+		<span class="align-middle">
+			Nenhum registro foi encontrado.
+		</span>
+	</div>
+</div>
