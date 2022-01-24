@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
 import {NotifierService} from 'angular-notifier';
 import {AutorDTO} from '../../_model/autor-d-t-o';
 import {AutorFiltroDTO} from '../../_model/autor-filtro-d-t-o';
@@ -15,7 +16,9 @@ export class AutorListarComponent implements OnInit {
 
 	arrayAutorDTO: AutorDTO[] = [];
 
-	constructor(private autorService: AutorService, private notifierService: NotifierService) {
+	constructor(private router: Router,
+				private autorService: AutorService,
+				private notifierService: NotifierService) {
 	}
 
 	ngOnInit() {
@@ -41,6 +44,18 @@ export class AutorListarComponent implements OnInit {
 	limpar() {
 		this.autorFiltroDTO = new AutorFiltroDTO();
 		this.pesquisar();
+	}
+
+	incluir() {
+		this.router.navigate(['autor/incluir']);
+	}
+
+	alterar() {
+
+	}
+
+	excluir() {
+
 	}
 
 }

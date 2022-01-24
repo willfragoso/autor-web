@@ -1,6 +1,7 @@
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {Injectable} from '@angular/core';
 import {catchError, map, Observable} from 'rxjs';
+import {AutorDTO} from '../../_model/autor-d-t-o';
 import {AutorFiltroDTO} from '../../_model/autor-filtro-d-t-o';
 import {AppService} from '../../app.service';
 
@@ -23,8 +24,8 @@ export class AutorService extends AppService {
 		if (autorFiltroDTO.nome) {
 			params = params.append('nome', autorFiltroDTO.nome);
 		}
-		if (autorFiltroDTO.paisOrigem) {
-			params = params.append('paisOrigem', autorFiltroDTO.paisOrigem);
+		if (autorFiltroDTO.pseudonimo) {
+			params = params.append('paisOrigem', autorFiltroDTO.pseudonimo);
 		}
 		if (autorFiltroDTO.dataNascimento) {
 			params = params.append('dataNascimento', autorFiltroDTO.dataNascimento);
@@ -35,6 +36,19 @@ export class AutorService extends AppService {
 			{
 				headers: this.getHeaders(),
 				params
+			}
+		).pipe(
+			map(this.extractData),
+			catchError(this.handleError)
+		);
+	}
+
+	postIncluirAutor(autorDTO: AutorDTO): Observable<any> {
+		return this.httpClient.post<any>(
+			this.baseApi + this.resource,
+			autorDTO,
+			{
+				headers: this.getHeaders()
 			}
 		).pipe(
 			map(this.extractData),
