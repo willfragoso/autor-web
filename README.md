@@ -1,7 +1,5 @@
 # AutorWeb
 
-Esse projeto fo gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 13.1.4.
-
 O projeto 'Cadastro de Autor' é composto por duas partes:
 
 - A interface (AutorWeb) construída em [Angular (V13.1.4)](https://angular.io/cli)
