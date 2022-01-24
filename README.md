@@ -4,10 +4,10 @@ Esse projeto fo gerado com [Angular CLI](https://github.com/angular/angular-cli)
 
 O projeto 'Cadastro de Autor' é composto por duas partes:
 
-- A interface (AutorWeb) construída em [Angular (V13.1.0)](https://angular.io/cli)
+- A interface (AutorWeb) construída em [Angular (V13.1.4)](https://angular.io/cli)
 	- Repositório: https://github.com/willfragoso/autor-web.git
 
-- O serviço (backend) construído em [Spring Boot (2.6.3)](https://spring.io/projects/spring-boot)
+- O serviço (AutorApi) construído em [Spring Boot (2.6.3)](https://spring.io/projects/spring-boot)
 	- Repositório: https://github.com/willfragoso/autor-api.git
 
 ### Configuração Inicial - Frontend
