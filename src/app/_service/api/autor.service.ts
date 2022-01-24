@@ -25,7 +25,7 @@ export class AutorService extends AppService {
 			params = params.append('nome', autorFiltroDTO.nome);
 		}
 		if (autorFiltroDTO.pseudonimo) {
-			params = params.append('paisOrigem', autorFiltroDTO.pseudonimo);
+			params = params.append('pseudonimo', autorFiltroDTO.pseudonimo);
 		}
 		if (autorFiltroDTO.dataNascimento) {
 			params = params.append('dataNascimento', autorFiltroDTO.dataNascimento);
