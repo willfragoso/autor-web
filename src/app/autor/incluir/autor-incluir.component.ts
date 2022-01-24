@@ -22,7 +22,7 @@ export class AutorIncluirComponent implements OnInit {
 
 	isAlteracao: boolean | undefined;
 
-	modalIncluirLivro: any;
+	modalCadastrarLivro: any;
 
 	constructor(private router: Router,
 				private autorService: AutorService,
@@ -30,22 +30,22 @@ export class AutorIncluirComponent implements OnInit {
 	}
 
 	ngOnInit() {
-		this.modalIncluirLivro = new window.bootstrap.Modal(
-			document.getElementById('modalIncluirLivro')
+		this.modalCadastrarLivro = new window.bootstrap.Modal(
+			document.getElementById('modalCadastrarLivro')
 		);
 	}
 
 	abrirModalIncluirLivro() {
 		this.isAlteracao = false;
 		this.index = -1;
-		this.modalIncluirLivro.show();
+		this.modalCadastrarLivro.show();
 	}
 
 	abrirModalAlterarLivro(livroDTO: LivroDTO, index: number) {
 		this.isAlteracao = true;
 		this.index = index;
 		this.livroDTO = JSON.parse(JSON.stringify(livroDTO));
-		this.modalIncluirLivro.show();
+		this.modalCadastrarLivro.show();
 	}
 
 	salvarLivro() {
@@ -55,7 +55,7 @@ export class AutorIncluirComponent implements OnInit {
 			this.autorDTO.livros.push(JSON.parse(JSON.stringify(this.livroDTO)));
 		}
 		this.livroDTO = new LivroDTO();
-		this.modalIncluirLivro.hide();
+		this.modalCadastrarLivro.hide();
 	}
 
 	excluirLivro(index: number) {
@@ -77,7 +77,7 @@ export class AutorIncluirComponent implements OnInit {
 	}
 
 	voltar() {
-		this.router.navigate(['autor']);
+		this.router.navigate(['autor']).then();
 	}
 
 }

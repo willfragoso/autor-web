@@ -43,8 +43,33 @@ export class AutorService extends AppService {
 		);
 	}
 
+	getCarregarAutor(id: number) {
+		return this.httpClient.get<any>(
+			this.baseApi + this.resource + '/' + id,
+			{
+				headers: this.getHeaders()
+			}
+		).pipe(
+			map(this.extractData),
+			catchError(this.handleError)
+		);
+	}
+
 	postIncluirAutor(autorDTO: AutorDTO): Observable<any> {
 		return this.httpClient.post<any>(
+			this.baseApi + this.resource,
+			autorDTO,
+			{
+				headers: this.getHeaders()
+			}
+		).pipe(
+			map(this.extractData),
+			catchError(this.handleError)
+		);
+	}
+
+	putAlterarAutor(autorDTO: AutorDTO): Observable<any> {
+		return this.httpClient.put<any>(
 			this.baseApi + this.resource,
 			autorDTO,
 			{

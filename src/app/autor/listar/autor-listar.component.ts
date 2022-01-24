@@ -50,12 +50,24 @@ export class AutorListarComponent implements OnInit {
 		this.router.navigate(['autor/incluir']);
 	}
 
-	alterar() {
-
+	alterar(autorDTO: AutorDTO) {
+		this.router.navigate(['autor/alterar/' + autorDTO.id]);
 	}
 
-	excluir() {
-
+	excluir(autorDTO: AutorDTO) {
+		// this.autorService.getPesquisarAutor(this.autorFiltroDTO).subscribe(
+		// 	{
+		// 		next: data => {
+		// 			this.arrayAutorDTO = data['content'];
+		// 			if (this.arrayAutorDTO.length === 0) {
+		// 				this.notifierService.notify('warning', 'Nenhum registro foi encontrado.');
+		// 			}
+		// 		},
+		// 		error: errorMessage => {
+		// 			this.notifierService.notify('error', errorMessage);
+		// 		}
+		// 	}
+		// );
 	}
 
 }
