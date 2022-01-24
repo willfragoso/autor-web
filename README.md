@@ -16,8 +16,8 @@ Para rodar o front é necessário seguir os seguintes passos:
 2) Executar a instalação das dependências (usando o NPM do Node.js)
 
 ```shell
-git clone https://github.com/willfragoso/autor-api.git
-cd autor-api/
+git clone https://github.com/willfragoso/autor-web.git
+cd autor-web/
 npm install
 ```
 
